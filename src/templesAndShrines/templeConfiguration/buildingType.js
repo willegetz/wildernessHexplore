@@ -5,7 +5,8 @@ const buildingType = function (rpgDiceRoller) {
 
     const buildingTypes = [
         { roll: 1, result: 'domed square' },
-        { roll: 2, result: 'pyramid' }
+        { roll: 2, result: 'pyramid' },
+        { roll: 3, result: 'parallelogram' },
     ]
     const getBuildingType = function () {
         const dieResult = d10.roll();

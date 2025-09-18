@@ -33,6 +33,15 @@ describe('buildingType', function () {
             const typeOfBuilding = buildingType.getBuildingType();
 
             assert.equal(typeOfBuilding, 'pyramid');
-        })
+        });
+
+        it('returns "parallelogram" when a 3 is rolled', function () {
+            d10Stub = sinon.stub(rpgDiceRollerWrapper, "d10").returns({ roll: () => 3 });
+            const buildingType = buildingTypeModule(rpgDiceRollerWrapper);
+
+            const typeOfBuilding = buildingType.getBuildingType();
+
+            assert.equal(typeOfBuilding, 'parallelogram');
+        });
     });
 });
