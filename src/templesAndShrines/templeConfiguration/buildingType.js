@@ -8,6 +8,12 @@ const buildingType = function (rpgDiceRoller) {
         { roll: 2, result: 'pyramid' },
         { roll: 3, result: 'parallelogram' },
         { roll: 4, result: 'rectangle' },
+        { roll: 5, result: 'obelisk' },
+        { roll: 6, result: 'round' },
+        { roll: 7, result: 'square' },
+        { roll: 8, result: 'hemisphere' },
+        { roll: 9, result: 'geodesic dome' },
+        { roll: 10, result: 'rhomboid' },
     ]
     const getBuildingType = function () {
         const dieResult = d10.roll();
