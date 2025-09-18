@@ -43,5 +43,14 @@ describe('buildingType', function () {
 
             assert.equal(typeOfBuilding, 'parallelogram');
         });
+
+        it('returns "rectangle" when a 4 is rolled', function () {
+            d10Stub = sinon.stub(rpgDiceRollerWrapper, "d10").returns({ roll: () => 4 });
+            const buildingType = buildingTypeModule(rpgDiceRollerWrapper);
+
+            const typeOfBuilding = buildingType.getBuildingType();
+
+            assert.equal(typeOfBuilding, 'rectangle');
+        });
     });
 });
