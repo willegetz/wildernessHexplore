@@ -16,5 +16,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@dice-roller/rpg-dice-roller": "^5.5.1"
   }
 }
