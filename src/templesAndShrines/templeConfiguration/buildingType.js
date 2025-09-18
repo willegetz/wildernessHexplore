@@ -1,10 +1,18 @@
 'use strict';
 
-const buildingType = function(){
-    const getBuildingType = function(){
-        const dieResult = 1;
+const buildingType = function (rpgDiceRoller) {
+    const d10 = rpgDiceRoller.d10();
 
-        return 'domed square';
+    const buildingTypes = [
+        { roll: 1, result: 'domed square' },
+        { roll: 2, result: 'pyramid' }
+    ]
+    const getBuildingType = function () {
+        const dieResult = d10.roll();
+
+        const buildingType = buildingTypes.filter(x => x.roll === dieResult)[0];
+
+        return buildingType.result;
     }
 
     return {
