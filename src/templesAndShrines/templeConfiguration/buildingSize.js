@@ -4,7 +4,8 @@ const buildingSize = function (rpgDiceRoller) {
     const d10 = rpgDiceRoller.d10();
 
     const buildingSizes = [
-        { roll: 1, result: '1 story' }
+        { roll: 1, result: '1 story' },
+        { roll: 4, result: '4 stories' }
     ]
 
     const getBuildingSize = function () {
