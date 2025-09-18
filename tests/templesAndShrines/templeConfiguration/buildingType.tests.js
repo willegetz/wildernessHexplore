@@ -14,7 +14,7 @@ describe('buildingType', function () {
         if (d10Stub !== undefined) {
             d10Stub.restore();
         }
-    })
+    });
 
     describe('getBuildingType', function () {
         it('returns "domed square" when a 1 is rolled', function () {
