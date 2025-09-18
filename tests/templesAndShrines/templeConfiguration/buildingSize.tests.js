@@ -39,5 +39,15 @@ describe('buildingSize', function () {
 
             assert.equal(sizeOfBuilding, '4 stories');
         });
+
+        it('returns "4 stories" when a 9 is rolled followed by a 6', function () {
+            d10Stub = sinon.stub(rpgDiceRollerWrapper, "d10").returns({ roll: () => 4 });
+            d6Stub = sinon.stub(rpgDiceRollerWrapper, "d6").returns({ roll: () => 6 });
+            const buildingSize = buildingSizeModule(rpgDiceRollerWrapper);
+
+            const sizeOfBuilding = buildingSize.getBuildingSize();
+
+            assert.equal(sizeOfBuilding, '9 stories');
+        });
     });
 });
