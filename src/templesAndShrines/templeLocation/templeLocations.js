@@ -14,8 +14,24 @@ const templeLocations = function (rpgDiceRoller) {
                 return description;
             }
         },
-        { roll: 2, result: 'village' },
-        { roll: 3, result: 'town' },
+        {
+            roll: 2, result: 'village', action: function () {
+                const villageFollowers = require('./followers/villageFollowers')(rpgDiceRoller);
+                const totalFollowerCount = villageFollowers.getFollowerCount();
+
+                const description = `village with ${totalFollowerCount} followers`;
+
+                return description;
+            }
+        },
+        { roll: 3, result: 'town', action: function () {
+                const townFollowers = require('./followers/townFollowers')(rpgDiceRoller);
+                const totalFollowerCount = townFollowers.getFollowerCount();
+
+                const description = `town with ${totalFollowerCount} followers`;
+
+                return description;
+            } },
         { roll: 4, result: 'city' },
         { roll: 5, result: 'wilderness' },
         { roll: 6, result: 'other plane' }
@@ -28,7 +44,7 @@ const templeLocations = function (rpgDiceRoller) {
 
         let description = templeLocation.result;
         const hasAction = templeLocation.action && typeof templeLocation.action === 'function';
-        if(hasAction){
+        if (hasAction) {
             description = templeLocation.action();
         }
 

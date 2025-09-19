@@ -11,7 +11,9 @@ describe('templeLocations', function () {
 
     let rpgDiceRollerFake = {
         d4: function () { },
-        d6: function () { }
+        d6: function () { },
+        d10: function () { },
+        d100: function () { }
     }
 
     this.afterEach(() => {
@@ -30,13 +32,13 @@ describe('templeLocations', function () {
             d6RollStub.onCall(0).returns(1);
             d6RollStub.onCall(1).returns(3);
 
-            rpgDiceRollerFake.d4 = function(){
+            rpgDiceRollerFake.d4 = function () {
                 return {
                     roll: d4RollStub
                 }
             }
 
-            rpgDiceRollerFake.d6 = function(){
+            rpgDiceRollerFake.d6 = function () {
                 return {
                     roll: d6RollStub
                 }
@@ -49,13 +51,23 @@ describe('templeLocations', function () {
             assert.equal(locationOfTemple, 'hamlet with 4 followers');
         });
 
-        it('returns "town" on a roll of 3', function () {
-            d6Stub = sinon.stub(rpgDiceRollerWrapper, 'd6').returns({ roll: () => 3 });
-            const templeLocations = templeLocationsModule(rpgDiceRollerWrapper);
+        it('returns "town with 90 followers" on a roll of 3 followed by 4 then 6', function () {
+            const d6RollStub = sinon.stub();
+            d6RollStub.onCall(0).returns(3);
+            d6RollStub.onCall(1).returns(4);
+            d6RollStub.onCall(2).returns(6);
+
+            rpgDiceRollerFake.d6 = function () {
+                return {
+                    roll: d6RollStub
+                }
+            }
+
+            const templeLocations = templeLocationsModule(rpgDiceRollerFake);
 
             const locationOfTemple = templeLocations.getTempleLocation();
 
-            assert.equal(locationOfTemple, 'town');
+            assert.equal(locationOfTemple, 'town with 90 followers');
         });
 
         it('returns "other plane" on a roll of 6', function () {
