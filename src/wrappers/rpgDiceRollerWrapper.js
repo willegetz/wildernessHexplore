@@ -3,9 +3,14 @@
 const rpgDiceRollerWrapper = (function () {
     const rpgDiceRoller = require('@dice-roller/rpg-dice-roller');
 
+    const d4Die = new rpgDiceRoller.Dice.StandardDice(4, 1, {}, 1, 4, 'Standard 1 to 4 die');
     const d6Die = new rpgDiceRoller.Dice.StandardDice(6, 1, {}, 1, 6, 'Standard 1 to 6 die');
     const d10Die = new rpgDiceRoller.Dice.StandardDice(10, 1, {}, 1, 10, 'Standard 1 to 10 die');
     const d20Die = new rpgDiceRoller.Dice.StandardDice(20, 1, {}, 1, 20, 'Standard 1 to 20 die');
+
+    const d4 = function () {
+        return rollFunction(d4Die);
+    }
 
     const d6 = function () {
         return rollFunction(d6Die);
@@ -29,6 +34,7 @@ const rpgDiceRollerWrapper = (function () {
     }
 
     return {
+        d4,
         d6,
         d10,
         d20
