@@ -33,5 +33,14 @@ describe('templeConstructionMaterials', function () {
 
             assert.equal(materialOfConstruction, 'earth');
         });
+
+        it('returns "unknown material" when a 20 is rolled', function () {
+            d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 20 });
+            const templeConstructionMaterials = templeConstructionMaterialsModule(rpgDiceRollerWrapper);
+
+            const materialOfConstruction = templeConstructionMaterials.getConstructionMaterial();
+
+            assert.equal(materialOfConstruction, 'unknown material');
+        });
     });
 });
