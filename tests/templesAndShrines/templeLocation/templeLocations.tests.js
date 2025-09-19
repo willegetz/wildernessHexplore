@@ -24,5 +24,14 @@ describe('templeLocations', function () {
 
             assert.equal(locationOfTemple, 'hamlet');
         });
+        
+        it('returns "town" on a roll of 3', function () {
+            d6Stub = sinon.stub(rpgDiceRollerWrapper, 'd6').returns({ roll: () => 3 });
+            const templeLocations = templeLocationsModule(rpgDiceRollerWrapper);
+
+            const locationOfTemple = templeLocations.getTempleLocation();
+
+            assert.equal(locationOfTemple, 'town');
+        });
     })
 });
