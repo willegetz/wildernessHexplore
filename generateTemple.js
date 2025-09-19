@@ -9,21 +9,26 @@ const generateTemple = (function () {
         const templeSizes = require('./src/templesAndShrines/templeConfiguration/templeSizes')(rpgDiceRollerWrapper);
         const templeStyles = require('./src/templesAndShrines/templeConfiguration/templeStyles')(rpgDiceRollerWrapper);
         const templeLocations = require('./src/templesAndShrines/templeLocation/templeLocations')(rpgDiceRollerWrapper);
-
+        const templeLeadership = require('./src/templesAndShrines/templeLeadership/templeLeadership')(rpgDiceRollerWrapper);
+        
         const condition = templeConditions.getTempleCondition();
         const material = templeConstructionMaterials.getConstructionMaterial();
         const size = templeSizes.getTempleSize();
         const style = templeStyles.getTempleStyle();
         const location = templeLocations.getTempleLocation();
+        const leadership = templeLeadership.getTempleLeadership();
 
-        const description = `A ${condition} ${style} temple made of ${material}, ${size}.
-Located ${location}`;
+        const description = `The temple is ${condition}.
+It is ${style} structure made of ${material}; ${size}.
+It is located ${location}.
+It is led by ${leadership}`;
 
         console.log(condition)
         console.log(material)
         console.log(size)
         console.log(style)
         console.log(location)
+        console.log(leadership);
         console.log();
         console.log(description);
     };
