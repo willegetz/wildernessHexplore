@@ -10,6 +10,7 @@ describe('hamletFollowers', function () {
     let d6Stub;
     let d6RollStub;
     let d4Stub;
+    let d4RollStub;
 
     let rpgDiceRollerFake = {
         d4: function () { },
@@ -123,6 +124,32 @@ describe('hamletFollowers', function () {
             const totalFollowers = hamletFollowers.getFollowerCount();
 
             assert.equal(totalFollowers, 14);
+        });
+
+        it('returns "4" when a 3 is rolled followed by a 1 then a 1', function () {
+            d6RollStub = sinon.stub().returns(3);
+
+            d4RollStub = sinon.stub();
+            d4RollStub.onCall(0).returns(1);
+            d4RollStub.onCall(1).returns(1);
+
+            rpgDiceRollerFake.d4 = function () {
+                return {
+                    roll: d4RollStub
+                }
+            }
+
+            rpgDiceRollerFake.d6 = function () {
+                return {
+                    roll: d6RollStub
+                }
+            }
+
+            const hamletFollowers = hamletFollowersModule(rpgDiceRollerFake);
+
+            const totalFollowers = hamletFollowers.getFollowerCount();
+
+            assert.equal(totalFollowers, 4);
         });
     });
 });
