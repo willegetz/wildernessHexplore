@@ -19,11 +19,11 @@ const templeSizes = function (rpgDiceRoller) {
             }
         },
         { roll: 5, result: '1 underground level' },
-        { roll: 6, result: '1 underground Level + 1 story above ground' },
+        { roll: 6, result: '1 underground Level with 1 story above ground' },
         { roll: 7, result: '2 underground levels' },
-        { roll: 8, result: '2 underground levels + 1 story above ground' },
+        { roll: 8, result: '2 underground levels with 1 story above ground' },
         { roll: 9, result: '3 underground levels' },
-        { roll: 10, result: '3 underground levels + 1 story above ground' }
+        { roll: 10, result: '3 underground levels with 1 story above ground' }
     ]
 
     const getTempleSize = function () {
