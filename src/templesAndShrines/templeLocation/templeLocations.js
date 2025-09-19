@@ -9,7 +9,7 @@ const templeLocations = function (rpgDiceRoller) {
                 const hamletFollowers = require('./followers/hamletFollowers')(rpgDiceRoller);
                 const totalFollowerCount = hamletFollowers.getFollowerCount();
 
-                const description = `hamlet with ${totalFollowerCount} followers`;
+                const description = `in a hamlet with ${totalFollowerCount} followers`;
 
                 return description;
             }
@@ -19,7 +19,7 @@ const templeLocations = function (rpgDiceRoller) {
                 const villageFollowers = require('./followers/villageFollowers')(rpgDiceRoller);
                 const totalFollowerCount = villageFollowers.getFollowerCount();
 
-                const description = `village with ${totalFollowerCount} followers`;
+                const description = `in a village with ${totalFollowerCount} followers`;
 
                 return description;
             }
@@ -29,7 +29,7 @@ const templeLocations = function (rpgDiceRoller) {
                 const townFollowers = require('./followers/townFollowers')(rpgDiceRoller);
                 const totalFollowerCount = townFollowers.getFollowerCount();
 
-                const description = `town with ${totalFollowerCount} followers`;
+                const description = `in a town with ${totalFollowerCount} followers`;
 
                 return description;
             }
@@ -39,7 +39,7 @@ const templeLocations = function (rpgDiceRoller) {
                 const cityFollowers = require('./followers/cityFollowers')(rpgDiceRoller);
                 const totalFollowerCount = cityFollowers.getFollowerCount();
 
-                const description = `city with ${totalFollowerCount} followers`;
+                const description = `in a city with ${totalFollowerCount} followers`;
 
                 return description;
             }
@@ -49,7 +49,7 @@ const templeLocations = function (rpgDiceRoller) {
                 const wildernessLocation = require('./wildernessLocations')(rpgDiceRoller);
                 const location = wildernessLocation.getWildernessLocation();
 
-                const description = `located ${location}`;
+                const description = `${location}`;
 
                 return description;
             }
@@ -59,7 +59,7 @@ const templeLocations = function (rpgDiceRoller) {
                 const otherPlaneLocations = require('./otherPlanes')(rpgDiceRoller);
                 const location = otherPlaneLocations.getOtherPlanesLocation();
 
-                const description = `located on the ${location}`;
+                const description = `on the ${location}`;
 
                 return description;
             }
