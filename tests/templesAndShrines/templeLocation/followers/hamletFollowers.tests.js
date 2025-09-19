@@ -21,7 +21,7 @@ describe('hamletFollowers', function () {
     });
 
     describe('getFollowerCount', function () {
-        it('returns "2" when a 1 is rolled folled by a 1', function () {
+        it('returns "2" when a 1 is rolled followed by a 1', function () {
             d4Stub = sinon.stub(rpgDiceRollerWrapper, 'd4').returns({ roll: () => 1 });
             d6Stub = sinon.stub(rpgDiceRollerWrapper, 'd6').returns({ roll: () => 1 });
 
@@ -30,6 +30,17 @@ describe('hamletFollowers', function () {
             const totalFollowers = hamletFollowers.getFollowerCount();
 
             assert.equal(totalFollowers, 2);
+        });
+
+        it('returns "5" when a 1 is rolled followed by a 4', function () {
+            d4Stub = sinon.stub(rpgDiceRollerWrapper, 'd4').returns({ roll: () => 4 });
+            d6Stub = sinon.stub(rpgDiceRollerWrapper, 'd6').returns({ roll: () => 1 });
+
+            const hamletFollowers = hamletFollowersModule(rpgDiceRollerWrapper);
+
+            const totalFollowers = hamletFollowers.getFollowerCount();
+
+            assert.equal(totalFollowers, 5);
         });
     });
 });
