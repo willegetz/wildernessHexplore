@@ -13,7 +13,7 @@ describe('templeConditions', function () {
         if (d10Stub !== undefined) {
             d10Stub.restore();
         }
-    })
+    });
 
     describe('getTempleCondition', function () {
         it('returns "under construction" when a 1 is rolled', function () {
