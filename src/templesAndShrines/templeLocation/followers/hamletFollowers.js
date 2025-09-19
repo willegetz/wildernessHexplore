@@ -6,10 +6,20 @@ const hamletFollowers = function (rpgDiceRoller) {
 
     const hamletFollowers = [
         {
-            roll: 1, result: '1d4 +1 followers', action: function () {
+            roll: 1, result: '1d4 + 1 followers', action: function () {
                 const dieResult = d4.roll();
 
                 const followers = dieResult + 1;
+
+                return followers;
+            }
+        },
+        {
+            roll: 2, result: '2d6 + 2 followers', action: function () {
+                const rollOne = d6.roll();
+                const rollTwo = d6.roll();
+
+                const followers = rollOne + rollTwo + 2;
 
                 return followers;
             }
