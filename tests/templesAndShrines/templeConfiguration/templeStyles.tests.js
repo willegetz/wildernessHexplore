@@ -3,10 +3,10 @@
 const assert = require('assert');
 const sinon = require('sinon');
 
-const buildingTypeModule = require('../../../src/templesAndShrines/templeConfiguration/buildingType');
+const templeStylesModule = require('../../../src/templesAndShrines/templeConfiguration/templeStyles');
 const rpgDiceRollerWrapper = require('../../../src/wrappers/rpgDiceRollerWrapper');
 
-describe('buildingType', function () {
+describe('templeStyles', function () {
 
     let d10Stub;
 
@@ -16,41 +16,41 @@ describe('buildingType', function () {
         }
     });
 
-    describe('getBuildingType', function () {
+    describe('getTempleStyle', function () {
         it('returns "domed square" when a 1 is rolled', function () {
             d10Stub = sinon.stub(rpgDiceRollerWrapper, "d10").returns({ roll: () => 1 });
-            const buildingType = buildingTypeModule(rpgDiceRollerWrapper);
+            const templeStyles = templeStylesModule(rpgDiceRollerWrapper);
 
-            const typeOfBuilding = buildingType.getBuildingType();
+            const styleOfTemple = templeStyles.getTempleStyle();
 
-            assert.equal(typeOfBuilding, 'domed square');
+            assert.equal(styleOfTemple, 'domed square');
         });
 
         it('returns "pyramid" when a 2 is rolled', function () {
             d10Stub = sinon.stub(rpgDiceRollerWrapper, "d10").returns({ roll: () => 2 });
-            const buildingType = buildingTypeModule(rpgDiceRollerWrapper);
+            const templeStyles = templeStylesModule(rpgDiceRollerWrapper);
 
-            const typeOfBuilding = buildingType.getBuildingType();
+            const styleOfTemple = templeStyles.getTempleStyle();
 
-            assert.equal(typeOfBuilding, 'pyramid');
+            assert.equal(styleOfTemple, 'pyramid');
         });
 
         it('returns "parallelogram" when a 3 is rolled', function () {
             d10Stub = sinon.stub(rpgDiceRollerWrapper, "d10").returns({ roll: () => 3 });
-            const buildingType = buildingTypeModule(rpgDiceRollerWrapper);
+            const templeStyles = templeStylesModule(rpgDiceRollerWrapper);
 
-            const typeOfBuilding = buildingType.getBuildingType();
+            const styleOfTemple = templeStyles.getTempleStyle();
 
-            assert.equal(typeOfBuilding, 'parallelogram');
+            assert.equal(styleOfTemple, 'parallelogram');
         });
 
         it('returns "rectangle" when a 4 is rolled', function () {
             d10Stub = sinon.stub(rpgDiceRollerWrapper, "d10").returns({ roll: () => 4 });
-            const buildingType = buildingTypeModule(rpgDiceRollerWrapper);
+            const templeStyles = templeStylesModule(rpgDiceRollerWrapper);
 
-            const typeOfBuilding = buildingType.getBuildingType();
+            const styleOfTemple = templeStyles.getTempleStyle();
 
-            assert.equal(typeOfBuilding, 'rectangle');
+            assert.equal(styleOfTemple, 'rectangle');
         });
     });
 });
