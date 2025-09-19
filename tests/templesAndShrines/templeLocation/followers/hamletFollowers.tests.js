@@ -177,5 +177,31 @@ describe('hamletFollowers', function () {
 
             assert.equal(totalFollowers, 7);
         });
+
+        it('returns "7" when a 3 is rolled followed by a 1 then a 4', function () {
+            d6RollStub = sinon.stub().returns(3);
+
+            d4RollStub = sinon.stub();
+            d4RollStub.onCall(0).returns(1);
+            d4RollStub.onCall(1).returns(4);
+
+            rpgDiceRollerFake.d4 = function () {
+                return {
+                    roll: d4RollStub
+                }
+            }
+
+            rpgDiceRollerFake.d6 = function () {
+                return {
+                    roll: d6RollStub
+                }
+            }
+
+            const hamletFollowers = hamletFollowersModule(rpgDiceRollerFake);
+
+            const totalFollowers = hamletFollowers.getFollowerCount();
+
+            assert.equal(totalFollowers, 7);
+        });
     });
 });
