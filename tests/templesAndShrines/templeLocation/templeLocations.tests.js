@@ -70,13 +70,22 @@ describe('templeLocations', function () {
             assert.equal(locationOfTemple, 'town with 90 followers');
         });
 
-        it('returns "other plane" on a roll of 6', function () {
-            d6Stub = sinon.stub(rpgDiceRollerWrapper, 'd6').returns({ roll: () => 6 });
-            const templeLocations = templeLocationsModule(rpgDiceRollerWrapper);
+        it('returns "located on the elemental plane of earth" on a roll of 6', function () {
+            const d6RollStub = sinon.stub();
+            d6RollStub.onCall(0).returns(6);
+            d6RollStub.onCall(1).returns(4);
+
+            rpgDiceRollerFake.d6 = function () {
+                return {
+                    roll: d6RollStub
+                }
+            }
+
+            const templeLocations = templeLocationsModule(rpgDiceRollerFake);
 
             const locationOfTemple = templeLocations.getTempleLocation();
 
-            assert.equal(locationOfTemple, 'other plane');
+            assert.equal(locationOfTemple, 'located on the elemental plane of earth');
         });
-    })
+    });
 });

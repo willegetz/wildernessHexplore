@@ -24,17 +24,46 @@ const templeLocations = function (rpgDiceRoller) {
                 return description;
             }
         },
-        { roll: 3, result: 'town', action: function () {
+        {
+            roll: 3, result: 'town', action: function () {
                 const townFollowers = require('./followers/townFollowers')(rpgDiceRoller);
                 const totalFollowerCount = townFollowers.getFollowerCount();
 
                 const description = `town with ${totalFollowerCount} followers`;
 
                 return description;
-            } },
-        { roll: 4, result: 'city' },
-        { roll: 5, result: 'wilderness' },
-        { roll: 6, result: 'other plane' }
+            }
+        },
+        {
+            roll: 4, result: 'city', action: function () {
+                const cityFollowers = require('./followers/cityFollowers')(rpgDiceRoller);
+                const totalFollowerCount = cityFollowers.getFollowerCount();
+
+                const description = `city with ${totalFollowerCount} followers`;
+
+                return description;
+            }
+        },
+        {
+            roll: 5, result: 'wilderness', action: function () {
+                const wildernessLocation = require('./wildernessLocations')(rpgDiceRoller);
+                const location = wildernessLocation.getWildernessLocation();
+
+                const description = `located ${location}`;
+
+                return description;
+            }
+        },
+        {
+            roll: 6, result: 'other plane', action: function () {
+                const otherPlaneLocations = require('./otherPlanes')(rpgDiceRoller);
+                const location = otherPlaneLocations.getOtherPlanesLocation();
+
+                const description = `located on the ${location}`;
+
+                return description;
+            }
+        }
     ]
 
     const getTempleLocation = function () {
