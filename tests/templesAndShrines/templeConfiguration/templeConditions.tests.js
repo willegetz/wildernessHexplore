@@ -24,5 +24,14 @@ describe('templeConditions', function () {
 
             assert.equal(conditionOfTemple, 'under construction');
         });
+        
+        it('returns "brand new" when a 2 is rolled', function () {
+            d10Stub = sinon.stub(rpgDiceRollerWrapper, 'd10').returns({ roll: () => 2 });
+            const templeConditions = templeConditionsModule(rpgDiceRollerWrapper);
+
+            const conditionOfTemple = templeConditions.getTempleCondition();
+
+            assert.equal(conditionOfTemple, 'brand new');
+        });
     });
 });

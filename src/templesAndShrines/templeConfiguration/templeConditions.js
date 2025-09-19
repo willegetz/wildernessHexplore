@@ -4,7 +4,8 @@ const templeConditions = function (rpgDiceRoller) {
     const d10 = rpgDiceRoller.d10();
 
     const templeConditions = [
-        {roll: 1, result: 'under construction'}
+        {roll: 1, result: 'under construction'},
+        {roll: 2, result: 'brand new'},
     ]
 
     const getTempleCondition = function(){
