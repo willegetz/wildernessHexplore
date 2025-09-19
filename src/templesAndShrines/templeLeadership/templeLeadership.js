@@ -6,11 +6,11 @@ const templeLeadership = function (rpgDiceRoller) {
     const templeLeadershipCollection = [
         { min: 1, max: 4, result: 'a high priest' },
         { min: 5, max: 5, result: 'dual leadership' },
-        { min: 6, max: 6, result: 'a triumvirates' }
+        { min: 6, max: 6, result: 'a triumvirate' }
     ]
 
     const getTempleLeadership = function () {
-        const dieResult = 6;
+        const dieResult = d6.roll();
 
         const templeLeadership = templeLeadershipCollection.filter(x => {
             const inRange = x.min <= dieResult && x.max >= dieResult;
