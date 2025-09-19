@@ -6,6 +6,7 @@ const templeConditions = function (rpgDiceRoller) {
     const templeConditions = [
         {roll: 1, result: 'under construction'},
         {roll: 2, result: 'brand new'},
+        {roll: 10, result: 'foundation only'}
     ]
 
     const getTempleCondition = function(){

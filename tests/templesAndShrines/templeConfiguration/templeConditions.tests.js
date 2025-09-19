@@ -33,5 +33,14 @@ describe('templeConditions', function () {
 
             assert.equal(conditionOfTemple, 'brand new');
         });
+        
+        it('returns "foundation only" when a 10 is rolled', function () {
+            d10Stub = sinon.stub(rpgDiceRollerWrapper, 'd10').returns({ roll: () => 10 });
+            const templeConditions = templeConditionsModule(rpgDiceRollerWrapper);
+
+            const conditionOfTemple = templeConditions.getTempleCondition();
+
+            assert.equal(conditionOfTemple, 'foundation only');
+        });
     });
 });
