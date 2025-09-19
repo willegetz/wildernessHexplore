@@ -4,7 +4,8 @@ const templeConstructionMaterials = function (rpgDiceRoller) {
     const d20 = rpgDiceRoller.d20();
 
     const constructionMaterials = [
-        { roll: 1, result: 'adobe' }
+        { roll: 1, result: 'adobe' },
+        { roll: 10, result: 'earth' },
     ]
 
     const getConstructionMaterial = function () {

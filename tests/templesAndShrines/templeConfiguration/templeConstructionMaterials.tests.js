@@ -24,5 +24,14 @@ describe('templeConstructionMaterials', function () {
 
             assert.equal(materialOfConstruction, 'adobe');
         });
+        
+        it('returns "earth" when a 10 is rolled', function () {
+            d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 10 });
+            const templeConstructionMaterials = templeConstructionMaterialsModule(rpgDiceRollerWrapper);
+
+            const materialOfConstruction = templeConstructionMaterials.getConstructionMaterial();
+
+            assert.equal(materialOfConstruction, 'earth');
+        });
     });
 });
