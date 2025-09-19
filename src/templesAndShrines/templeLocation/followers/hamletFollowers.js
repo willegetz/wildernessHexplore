@@ -43,6 +43,27 @@ const hamletFollowers = function (rpgDiceRoller) {
 
                 return followers;
             }
+        },
+        {
+            roll: 5, result: '3d6 + 2 followers', action: function () {
+                const rollOne = d6.roll();
+                const rollTwo = d6.roll();
+                const rollThree = d6.roll();
+
+                const followers = rollOne + rollTwo + rollThree + 2;
+
+                return followers;
+            }
+        },
+        {
+            roll: 6, result: '2d6 + 10 followers', action: function () {
+                const rollOne = d6.roll();
+                const rollTwo = d6.roll();
+
+                const followers = rollOne + rollTwo + 10;
+
+                return followers;
+            }
         }
     ]
 

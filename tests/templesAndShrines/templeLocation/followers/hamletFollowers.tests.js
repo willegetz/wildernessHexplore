@@ -305,5 +305,44 @@ describe('hamletFollowers', function () {
 
             assert.equal(totalFollowers, 15);
         });
+
+        it('returns "5" when a 5 is rolled followed by a 1 then a 1 then a 1', function () {
+            d6RollStub = sinon.stub()
+            d6RollStub.onCall(0).returns(5);
+            d6RollStub.onCall(1).returns(1);
+            d6RollStub.onCall(2).returns(1);
+            d6RollStub.onCall(3).returns(1);
+
+            rpgDiceRollerFake.d6 = function () {
+                return {
+                    roll: d6RollStub
+                }
+            }
+
+            const hamletFollowers = hamletFollowersModule(rpgDiceRollerFake);
+
+            const totalFollowers = hamletFollowers.getFollowerCount();
+
+            assert.equal(totalFollowers, 5);
+        });
+
+        it('returns "12" when a 6 is rolled followed by a 1 then a 1', function () {
+            d6RollStub = sinon.stub()
+            d6RollStub.onCall(0).returns(6);
+            d6RollStub.onCall(1).returns(1);
+            d6RollStub.onCall(2).returns(1);
+
+            rpgDiceRollerFake.d6 = function () {
+                return {
+                    roll: d6RollStub
+                }
+            }
+
+            const hamletFollowers = hamletFollowersModule(rpgDiceRollerFake);
+
+            const totalFollowers = hamletFollowers.getFollowerCount();
+
+            assert.equal(totalFollowers, 12);
+        });
     });
 });
