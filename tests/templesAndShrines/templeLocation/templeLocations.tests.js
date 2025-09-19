@@ -33,5 +33,14 @@ describe('templeLocations', function () {
 
             assert.equal(locationOfTemple, 'town');
         });
+        
+        it('returns "other plane" on a roll of 6', function () {
+            d6Stub = sinon.stub(rpgDiceRollerWrapper, 'd6').returns({ roll: () => 6 });
+            const templeLocations = templeLocationsModule(rpgDiceRollerWrapper);
+
+            const locationOfTemple = templeLocations.getTempleLocation();
+
+            assert.equal(locationOfTemple, 'other plane');
+        });
     })
 });

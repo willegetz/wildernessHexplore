@@ -5,7 +5,8 @@ const templeLocations = function (rpgDiceRoller) {
 
     const templeLocations = [
         { roll: 1, result: 'hamlet' },
-        { roll: 3, result: 'town' }
+        { roll: 3, result: 'town' },
+        { roll: 6, result: 'other plane' }
     ]
 
     const getTempleLocation = function () {
