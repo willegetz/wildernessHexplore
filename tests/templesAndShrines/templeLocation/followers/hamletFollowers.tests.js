@@ -229,5 +229,81 @@ describe('hamletFollowers', function () {
 
             assert.equal(totalFollowers, 10);
         });
+
+        it('returns "5" when a 4 is rolled followed by a 1 then a 1', function () {
+            d6RollStub = sinon.stub()
+            d6RollStub.onCall(0).returns(4);
+            d6RollStub.onCall(1).returns(1);
+            d6RollStub.onCall(2).returns(1);
+
+            rpgDiceRollerFake.d6 = function () {
+                return {
+                    roll: d6RollStub
+                }
+            }
+
+            const hamletFollowers = hamletFollowersModule(rpgDiceRollerFake);
+
+            const totalFollowers = hamletFollowers.getFollowerCount();
+
+            assert.equal(totalFollowers, 5);
+        });
+
+        it('returns "10" when a 4 is rolled followed by a 6 then a 1', function () {
+            d6RollStub = sinon.stub()
+            d6RollStub.onCall(0).returns(4);
+            d6RollStub.onCall(1).returns(6);
+            d6RollStub.onCall(2).returns(1);
+
+            rpgDiceRollerFake.d6 = function () {
+                return {
+                    roll: d6RollStub
+                }
+            }
+
+            const hamletFollowers = hamletFollowersModule(rpgDiceRollerFake);
+
+            const totalFollowers = hamletFollowers.getFollowerCount();
+
+            assert.equal(totalFollowers, 10);
+        });
+
+        it('returns "10" when a 4 is rolled followed by a 1 then a 6', function () {
+            d6RollStub = sinon.stub()
+            d6RollStub.onCall(0).returns(4);
+            d6RollStub.onCall(1).returns(1);
+            d6RollStub.onCall(2).returns(6);
+
+            rpgDiceRollerFake.d6 = function () {
+                return {
+                    roll: d6RollStub
+                }
+            }
+
+            const hamletFollowers = hamletFollowersModule(rpgDiceRollerFake);
+
+            const totalFollowers = hamletFollowers.getFollowerCount();
+
+            assert.equal(totalFollowers, 10);
+        });
+
+        it('returns "15" when a 4 is rolled followed by a 6 then a 6', function () {
+            d6RollStub = sinon.stub()
+            d6RollStub.onCall(0).returns(4);
+            d6RollStub.onCall(1).returns(6);
+            d6RollStub.onCall(2).returns(6);
+
+            rpgDiceRollerFake.d6 = function () {
+                return {
+                    roll: d6RollStub
+                }
+            }
+
+            const hamletFollowers = hamletFollowersModule(rpgDiceRollerFake);
+
+            const totalFollowers = hamletFollowers.getFollowerCount();
+
+            assert.equal(totalFollowers, 15);
+        });
     });
 });
