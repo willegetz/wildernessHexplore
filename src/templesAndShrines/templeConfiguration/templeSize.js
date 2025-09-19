@@ -1,10 +1,10 @@
 'use strict';
 
-const buildingSize = function (rpgDiceRoller) {
+const templeSize = function (rpgDiceRoller) {
     const d6 = rpgDiceRoller.d6();
     const d10 = rpgDiceRoller.d10();
 
-    const buildingSizes = [
+    const templeSizes = [
         { roll: 1, result: '1 story' },
         { roll: 2, result: '2 stories' },
         { roll: 3, result: '3 stories' },
@@ -26,24 +26,24 @@ const buildingSize = function (rpgDiceRoller) {
         { roll: 10, result: '3 underground levels + 1 story above ground' }
     ]
 
-    const getBuildingSize = function () {
+    const getTempleSize = function () {
         const dieResult = d10.roll();
 
-        const buildingSize = buildingSizes.filter(x => x.roll === dieResult)[0];
+        const templeSize = templeSizes.filter(x => x.roll === dieResult)[0];
 
-        let description = buildingSize.result;
+        let description = templeSize.result;
 
-        const hasAction = buildingSize.action && typeof buildingSize.action === 'function';
+        const hasAction = templeSize.action && typeof templeSize.action === 'function';
         if(hasAction){
-            description = buildingSize.action();
+            description = templeSize.action();
         }
 
         return description;
     }
 
     return {
-        getBuildingSize
+        getTempleSize
     }
 };
 
-module.exports = buildingSize;
+module.exports = templeSize;
