@@ -1,6 +1,6 @@
 'use strict';
 
-const templeSize = function (rpgDiceRoller) {
+const templeSizes = function (rpgDiceRoller) {
     const d6 = rpgDiceRoller.d6();
     const d10 = rpgDiceRoller.d10();
 
@@ -46,4 +46,4 @@ const templeSize = function (rpgDiceRoller) {
     }
 };
 
-module.exports = templeSize;
+module.exports = templeSizes;
