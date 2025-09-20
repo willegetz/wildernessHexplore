@@ -45,12 +45,12 @@ const cityFollowers = function (rpgDiceRoller) {
             }
         },
         {
-            roll: 5, result: '(3d6 x 10) + 200 followers', action: function () {
-                const rollOne = d6.roll();
-                const rollTwo = d6.roll();
-                const rollThree = d6.roll();
+            roll: 5, result: '(3 d6x10) + 200 followers', action: function () {
+                const rollOne = d6.roll() * 10;
+                const rollTwo = d6.roll() * 10;
+                const rollThree = d6.roll() * 10;
 
-                const followers = ((rollOne + rollTwo + rollThree) * 10) + 200;
+                const followers = rollOne + rollTwo + rollThree + 200;
 
                 return followers;
             }
