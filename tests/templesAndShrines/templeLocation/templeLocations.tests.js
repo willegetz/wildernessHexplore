@@ -23,7 +23,7 @@ describe('templeLocations', function () {
     });
 
     describe('getTempleLocation', function () {
-        it('returns "hamlet with 4 followers" on a roll of 1 followed by 3 then 1 then 1', function () {
+        it('returns "in a hamlet with 6 followers" on a roll of 1 followed by 3 then 1 then 1', function () {
             const d4RollStub = sinon.stub();
             d4RollStub.onCall(0).returns(1);
             d4RollStub.onCall(1).returns(1);
@@ -48,10 +48,10 @@ describe('templeLocations', function () {
 
             const locationOfTemple = templeLocations.getTempleLocation();
 
-            assert.equal(locationOfTemple, 'hamlet with 4 followers');
+            assert.equal(locationOfTemple, 'in a hamlet with 6 followers');
         });
 
-        it('returns "town with 90 followers" on a roll of 3 followed by 4 then 6', function () {
+        it('returns "in a town with 90 followers" on a roll of 3 followed by 4 then 6', function () {
             const d6RollStub = sinon.stub();
             d6RollStub.onCall(0).returns(3);
             d6RollStub.onCall(1).returns(4);
@@ -67,10 +67,10 @@ describe('templeLocations', function () {
 
             const locationOfTemple = templeLocations.getTempleLocation();
 
-            assert.equal(locationOfTemple, 'town with 90 followers');
+            assert.equal(locationOfTemple, 'in a town with 90 followers');
         });
 
-        it('returns "located on the elemental plane of earth" on a roll of 6', function () {
+        it('returns "on the elemental plane of earth" on a roll of 6', function () {
             const d6RollStub = sinon.stub();
             d6RollStub.onCall(0).returns(6);
             d6RollStub.onCall(1).returns(4);
@@ -85,7 +85,7 @@ describe('templeLocations', function () {
 
             const locationOfTemple = templeLocations.getTempleLocation();
 
-            assert.equal(locationOfTemple, 'located on the elemental plane of earth');
+            assert.equal(locationOfTemple, 'on the elemental plane of earth');
         });
     });
 });
