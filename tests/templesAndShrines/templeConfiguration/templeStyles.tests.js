@@ -17,40 +17,40 @@ describe('templeStyles', function () {
     });
 
     describe('getTempleStyle', function () {
-        it('returns "domed square" when a 1 is rolled', function () {
+        it('returns "a domed square" when a 1 is rolled', function () {
             d10Stub = sinon.stub(rpgDiceRollerWrapper, "d10").returns({ roll: () => 1 });
             const templeStyles = templeStylesModule(rpgDiceRollerWrapper);
 
             const styleOfTemple = templeStyles.getTempleStyle();
 
-            assert.equal(styleOfTemple, 'domed square');
+            assert.equal(styleOfTemple, 'a domed square');
         });
 
-        it('returns "pyramid" when a 2 is rolled', function () {
+        it('returns "a pyramid" when a 2 is rolled', function () {
             d10Stub = sinon.stub(rpgDiceRollerWrapper, "d10").returns({ roll: () => 2 });
             const templeStyles = templeStylesModule(rpgDiceRollerWrapper);
 
             const styleOfTemple = templeStyles.getTempleStyle();
 
-            assert.equal(styleOfTemple, 'pyramid');
+            assert.equal(styleOfTemple, 'a pyramid');
         });
 
-        it('returns "parallelogram" when a 3 is rolled', function () {
+        it('returns "a parallelogram" when a 3 is rolled', function () {
             d10Stub = sinon.stub(rpgDiceRollerWrapper, "d10").returns({ roll: () => 3 });
             const templeStyles = templeStylesModule(rpgDiceRollerWrapper);
 
             const styleOfTemple = templeStyles.getTempleStyle();
 
-            assert.equal(styleOfTemple, 'parallelogram');
+            assert.equal(styleOfTemple, 'a parallelogram');
         });
 
-        it('returns "rectangle" when a 4 is rolled', function () {
+        it('returns "a rectangular" when a 4 is rolled', function () {
             d10Stub = sinon.stub(rpgDiceRollerWrapper, "d10").returns({ roll: () => 4 });
             const templeStyles = templeStylesModule(rpgDiceRollerWrapper);
 
             const styleOfTemple = templeStyles.getTempleStyle();
 
-            assert.equal(styleOfTemple, 'rectangle');
+            assert.equal(styleOfTemple, 'a rectangular');
         });
     });
 });
