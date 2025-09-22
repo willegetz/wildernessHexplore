@@ -100,7 +100,7 @@ describe('leaderLevels', function () {
         });
 
         describe('8th level', function () {
-            it('returns "8th level" when an 9 is rolled', function () {
+            it('returns "8th level" when a 9 is rolled', function () {
                 d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 9 });
 
                 const leaderLevels = leaderLevelsModule(rpgDiceRollerWrapper);
@@ -110,7 +110,7 @@ describe('leaderLevels', function () {
                 assert.equal('8th level', leaderLevel);
             });
 
-            it('returns "8th level" when an 10 is rolled', function () {
+            it('returns "8th level" when a 10 is rolled', function () {
                 d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 10 });
 
                 const leaderLevels = leaderLevelsModule(rpgDiceRollerWrapper);
@@ -124,6 +124,16 @@ describe('leaderLevels', function () {
         describe('9th level', function(){
             it('returns "8th level" when an 11 is rolled', function () {
                 d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 11 });
+
+                const leaderLevels = leaderLevelsModule(rpgDiceRollerWrapper);
+
+                const leaderLevel = leaderLevels.getLeaderLevel();
+
+                assert.equal('9th level', leaderLevel);
+            });
+            
+            it('returns "8th level" when a 12 is rolled', function () {
+                d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 12 });
 
                 const leaderLevels = leaderLevelsModule(rpgDiceRollerWrapper);
 
