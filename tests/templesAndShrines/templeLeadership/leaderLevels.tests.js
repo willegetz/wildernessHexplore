@@ -43,6 +43,17 @@ describe('leaderLevels', function () {
 
                 assert.equal('19th level', leaderLevel);
             });
+
+            it('returns "12th level" when a 20 is rolled followed by a 1', function () {
+                d8Stub = sinon.stub(rpgDiceRollerWrapper, 'd8').returns({ roll: () => 1 });
+                d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 20 });
+
+                let leaderLevels = leaderLevelsModule(rpgDiceRollerWrapper);
+
+                const leaderLevel = leaderLevels.getLeaderLevel();
+
+                assert.equal('12th level', leaderLevel);
+            });
         });
     });
 });
