@@ -32,7 +32,7 @@ describe('leaderLevels', function () {
                 assert.equal('4th level', leaderLevel);
             });
         });
-        
+
         describe('5th', function () {
             it('returns "5th level" when a 2 is rolled', function () {
                 d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 2 });
@@ -43,7 +43,7 @@ describe('leaderLevels', function () {
 
                 assert.equal('5th level', leaderLevel);
             });
-            
+
             it('returns "5th level" when a 3 is rolled', function () {
                 d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 3 });
 
@@ -52,6 +52,18 @@ describe('leaderLevels', function () {
                 const leaderLevel = leaderLevels.getLeaderLevel();
 
                 assert.equal('5th level', leaderLevel);
+            });
+        });
+
+        describe('6th level', function () {
+            it('returns "6th level" when a 4 is rolled', function () {
+                d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 4 });
+
+                const leaderLevels = leaderLevelsModule(rpgDiceRollerWrapper);
+
+                const leaderLevel = leaderLevels.getLeaderLevel();
+
+                assert.equal('6th level', leaderLevel);
             });
         });
 
