@@ -175,6 +175,16 @@ describe('leaderLevels', function () {
 
                 assert.equal('11th level', leaderLevel);
             });
+
+            it('returns "11th level" when an 18 is rolled', function () {
+                d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 18 });
+
+                const leaderLevels = leaderLevelsModule(rpgDiceRollerWrapper);
+
+                const leaderLevel = leaderLevels.getLeaderLevel();
+
+                assert.equal('11th level', leaderLevel);
+            });
         });
 
         describe('11th +1d8', function () {
