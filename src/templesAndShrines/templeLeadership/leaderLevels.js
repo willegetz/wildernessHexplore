@@ -50,7 +50,7 @@ const leaderLevels = function (rpgDiceRoller) {
                 const dieResult = d8.roll();
                 const level = 11 + dieResult;
 
-                return `${level} level`;
+                return `${level}th level`;
             }
         }
     ]
