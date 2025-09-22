@@ -21,6 +21,18 @@ describe('leaderLevels', function () {
     });
 
     describe('getLeaderLevel', function () {
+        describe('4th', function () {
+            it('returns "4th level" when a 1 is rolled', function () {
+                d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 1 });
+
+                const leaderLevels = leaderLevelsModule(rpgDiceRollerWrapper);
+
+                const leaderLevel = leaderLevels.getLeaderLevel();
+
+                assert.equal('4th level', leaderLevel);
+            });
+        });
+
         describe('11th +1d8', function () {
             it('returns "12th level" when a 19 is rolled followed by a 1', function () {
                 d8Stub = sinon.stub(rpgDiceRollerWrapper, 'd8').returns({ roll: () => 1 });
