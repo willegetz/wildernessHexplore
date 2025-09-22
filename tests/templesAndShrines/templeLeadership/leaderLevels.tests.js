@@ -119,7 +119,19 @@ describe('leaderLevels', function () {
 
                 assert.equal('8th level', leaderLevel);
             });
-        })
+        });
+
+        describe('9th level', function(){
+            it('returns "8th level" when an 11 is rolled', function () {
+                d20Stub = sinon.stub(rpgDiceRollerWrapper, 'd20').returns({ roll: () => 11 });
+
+                const leaderLevels = leaderLevelsModule(rpgDiceRollerWrapper);
+
+                const leaderLevel = leaderLevels.getLeaderLevel();
+
+                assert.equal('9th level', leaderLevel);
+            });
+        });
 
         describe('11th +1d8', function () {
             it('returns "12th level" when a 19 is rolled followed by a 1', function () {
